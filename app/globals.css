@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@font-face {
+	font-family: "Maestro";
+	src: url("/fonts/Maestro-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+.maestro {
+	font-family: "Maestro";
+}
+
+@layer utilities {
+	@keyframes bounce-up {
+		0%,
+		100% {
+			transform: translateY(0);
+			opacity: 1;
+		}
+		50% {
+			transform: translateY(-0.6vh);
+			opacity: 0.5;
+		}
+	}
+
+	.animate-bounce {
+		animation: bounce-up 0.6s ease-in-out infinite;
+	}
+}
