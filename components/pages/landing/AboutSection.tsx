@@ -1,10 +1,11 @@
 "use client";
-import Link from "next/link";
 import React, { useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { easeOut } from "framer-motion";
+import useLoginModal from "@/app/hooks/useLoginModal";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 const fadeInUp = (delay = 0) => ({
 	hidden: { opacity: 0, y: 30 },
@@ -33,6 +34,9 @@ const AboutSection = () => {
 		if (inView2) controls2.start("visible");
 		if (inView3) controls3.start("visible");
 	}, [inView1, inView2, inView3, controls1, controls2, controls3]);
+
+	const loginModal = useLoginModal();
+	const registerModal = useRegisterModal();
 
 	return (
 		<div className="">
@@ -66,8 +70,10 @@ const AboutSection = () => {
 							variants={fadeInUp(0.5)}
 							className="text-[3vh] font-extralight pt-[1vh] pb-[2.5vh]"
 						>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							Mediblob is a smart healthcare platform where doctors and patients
+							actually stay connected. Patients track symptoms, medications, and
+							progress, while doctors see updates in real-time. It makes follo
+							ups way smoother and helps catch problems early.
 						</motion.p>
 
 						<motion.div
@@ -76,21 +82,21 @@ const AboutSection = () => {
 							variants={fadeInUp(0.7)}
 							className="flex items-center justify-center w-full gap-[1vw]"
 						>
-							<Link
-								href={"/"}
+							<button
+								onClick={() => loginModal.onOpen()}
 								className="flex items-center justify-center rounded-[2.75vh] w-full py-[1.5vh] font-bold border-2 border-black bg-neutral-800 text-white text-[2.25vh]"
 							>
-								Patient Login
-							</Link>
-							<Link
-								href={"/"}
+								Sign in
+							</button>
+							<button
+								onClick={() => registerModal.onOpen()}
 								className="flex items-center justify-center rounded-[2.75vh] w-full font-bold border-2 border-black relative py-[1.5vh] overflow-hidden"
 							>
-								<span className="pr-[3vw] text-[2.25vh]">Doctor Login</span>
+								<span className="pr-[3vw] text-[2.25vh]">Sign up</span>
 								<span className="h-full bg-neutral-100 px-[1.5vw] flex items-center justify-center border-l-2 absolute right-0 top-0 text-[2.25vh]">
 									<FaArrowRight />
 								</span>
-							</Link>
+							</button>
 						</motion.div>
 					</div>
 
@@ -101,9 +107,9 @@ const AboutSection = () => {
 						className="w-2/5"
 					>
 						<img
-							src="/banner.jpg"
+							src="/imgs/img1.png"
 							className="w-full h-full object-cover rounded-[10vh] border-2 border-black"
-							alt=""
+							alt="Dashboard preview"
 						/>
 					</motion.div>
 				</motion.div>
@@ -122,7 +128,7 @@ const AboutSection = () => {
 						variants={fadeInUp(0.5)}
 						className="text-[3vh] pl-[1vw]"
 					>
-						Lorem ipsum dolor sit amet consectetur adipisicing.
+						Track symptoms and log medications in just a few clicks.
 					</motion.div>
 					<motion.div
 						initial="hidden"
@@ -131,14 +137,14 @@ const AboutSection = () => {
 						className="flex gap-[1vw]"
 					>
 						<img
-							src="/banner.jpg"
+							src="/imgs/img2.png"
 							className="w-[15vw] h-[13vh] object-cover rounded-[6vh] border-2 border-black"
-							alt=""
+							alt="Tracking feature"
 						/>
 						<img
-							src="/banner.jpg"
+							src="/imgs/img3.png"
 							className="w-[15vw] h-[13vh] object-cover rounded-[6vh] border-2 border-black"
-							alt=""
+							alt="Progress screen"
 						/>
 					</motion.div>
 				</motion.div>
@@ -157,7 +163,7 @@ const AboutSection = () => {
 						variants={fadeInUp(0.7)}
 						className="text-[3vh] pl-[1vw]"
 					>
-						Lorem ipsum dolor sit amet consectetur adipisicing.
+						Secure video calls, live updates, and insights
 					</motion.div>
 					<motion.div
 						initial="hidden"
@@ -166,14 +172,14 @@ const AboutSection = () => {
 						className="flex gap-[1vw]"
 					>
 						<img
-							src="/banner.jpg"
+							src="/imgs/img4.png"
 							className="w-[15vw] h-[13vh] object-cover rounded-[6vh] border-2 border-black"
-							alt=""
+							alt="Video call"
 						/>
 						<img
-							src="/banner.jpg"
+							src="/imgs/img5.png"
 							className="w-[15vw] h-[13vh] object-cover rounded-[6vh] border-2 border-black"
-							alt=""
+							alt="Insights feature"
 						/>
 					</motion.div>
 				</motion.div>

@@ -3,8 +3,17 @@ import React from "react";
 import Heading from "../dashboard/Heading";
 import DoctorNavbar from "../dashboard/doctorDashboard/DoctorNavbar";
 import { FaStar } from "react-icons/fa";
+import { FaPerson } from "react-icons/fa6";
 
 const DoctorProfilePage = ({ currentUser }: { currentUser: SafeUser }) => {
+	const now = new Date();
+
+	const upcomingEvent = currentUser.doctorEvents
+		?.filter((event) => new Date(event.dateTime) > now)
+		.sort(
+			(a, b) => new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()
+		)[0];
+
 	return (
 		<div className="flex">
 			<DoctorNavbar />
@@ -14,11 +23,9 @@ const DoctorProfilePage = ({ currentUser }: { currentUser: SafeUser }) => {
 					<Heading />
 				</div>
 				<div className="flex mt-[5vh] gap-[4vw]">
-					<img
-						src="/pfp1.png"
-						className="w-[15vw] h-[15vw] object-cover border-2 border-black p-[1.5vw] rounded-full "
-						alt=""
-					/>
+					<div className="w-[15vw] aspect-[1] rounded-full border-2 border-black flex items-center justify-center">
+						<FaPerson className="text-[10vh]" />
+					</div>
 					<div className="flex flex-col w-full items-start justify-center">
 						<h2 className="text-[3vh] font-semibold">{currentUser.name}</h2>
 						<h3 className="text-[2.5vh]">{currentUser.email}</h3>
@@ -46,37 +53,49 @@ const DoctorProfilePage = ({ currentUser }: { currentUser: SafeUser }) => {
 				<div className="flex mt-[4vh]">
 					<div className="w-2/3 pr-[3vw]">
 						<p className="text-[3vh] font-extralight leading-[4vh]">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi
-							accusantium dignissimos fuga voluptate doloremque voluptates
-							similique animi repudiandae consequuntur hic, explicabo nostrum
-							praesentium et optio, alias iste minus, aliquam totam!
+							{currentUser.bio}
 						</p>
 						<div className="flex flex-col mt-[6vh]">
 							<div className="flex">
 								<div className="flex flex-col items-center justify-center py-[3vh] w-full border-r-2 border-black">
-									<h2 className="text-[3vh] font-semibold">Lorem, ipsum.</h2>
-									<p className="text-[2vh] font-light">
-										Lorem ipsum dolor sit amet.
-									</p>
+									<h2 className="text-[3vh] font-semibold">Working at</h2>
+									<p className="text-[2vh] font-light">Mediblob</p>
 								</div>
 								<div className="flex flex-col items-center justify-center py-[3vh] w-full">
-									<h2 className="text-[3vh] font-semibold">Lorem, ipsum.</h2>
+									<h2 className="text-[3vh] font-semibold">Total Users</h2>
 									<p className="text-[2vh] font-light">
-										Lorem ipsum dolor sit amet.
+										{currentUser.connectedUsers.length} active users connected
 									</p>
 								</div>
 							</div>
 							<div className="flex border-t-2 border-black">
 								<div className="flex flex-col items-center justify-center py-[3vh] w-full border-r-2 border-black">
-									<h2 className="text-[3vh] font-semibold">Lorem, ipsum.</h2>
+									<h2 className="text-[3vh] font-semibold">Upcoming Event</h2>
 									<p className="text-[2vh] font-light">
-										Lorem ipsum dolor sit amet.
+										{upcomingEvent
+											? `${
+													upcomingEvent.type === "online"
+														? "Online"
+														: "In-person"
+											  } session on ${new Date(
+													upcomingEvent.dateTime
+											  ).toLocaleDateString("en-US", {
+													month: "long",
+													day: "numeric",
+													year: "numeric",
+											  })}`
+											: "No upcoming events"}
 									</p>
 								</div>
 								<div className="flex flex-col items-center justify-center py-[3vh] w-full">
-									<h2 className="text-[3vh] font-semibold">Lorem, ipsum.</h2>
+									<h2 className="text-[3vh] font-semibold">
+										Medications Assigned
+									</h2>
 									<p className="text-[2vh] font-light">
-										Lorem ipsum dolor sit amet.
+										{currentUser.assignedMedications
+											? currentUser.assignedMedications.length
+											: ""}{" "}
+										prescriptions currently active
 									</p>
 								</div>
 							</div>

@@ -15,7 +15,6 @@ export async function POST(req: Request) {
 	const body = await req.json();
 	console.log(body);
 	const { email, name, password, username, access } = body;
-	console.log(body);
 	const userCode = generateUserCode();
 
 	const hashedPassword = await bcrypt.hash(password, 12);

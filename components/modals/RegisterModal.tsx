@@ -46,7 +46,7 @@ const RegisterModal = () => {
 
 					if (callback?.ok) {
 						toast.success("Logged in");
-						router.push("/dashboard");
+						router.push("/");
 						router.refresh();
 						loginModal.onClose();
 					}
@@ -108,7 +108,7 @@ const RegisterModal = () => {
 					errors={errors}
 					required
 					register={register}
-					options={["Patient", "Doctor"]}
+					options={["patient", "doctor"]}
 				/>
 			</div>
 			<Input

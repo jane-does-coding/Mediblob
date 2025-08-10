@@ -12,6 +12,10 @@ model User {
   name           String
   username       String   
   access         String   
+  bio            String?   
+  tagline            String?   
+  yearsInField            Int?   
+  Degree            String?   
   code           String   @unique 
   email          String   @unique
   hashedPassword String
@@ -20,6 +24,15 @@ model User {
 
   connectionsFrom Connection[] @relation("ConnectionsFrom")
   connectionsTo   Connection[] @relation("ConnectionsTo")
+
+  prescribedMedications Medication[] @relation("PrescribedTo")
+  assignedMedications   Medication[] @relation("AssignedBy")
+
+  doctorEvents  Event[] @relation("DoctorEvents")
+  patientEvents Event[] @relation("PatientEvents")
+
+
+  symptoms     Symptom[] 
 }
 
 model Connection {
@@ -32,4 +45,56 @@ model Connection {
   toId   String @db.ObjectId
 
   createdAt DateTime @default(now())
+}
+
+model Symptom {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  symptom   String
+  level     SymptomLevel
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime @default(now())
+}
+
+enum SymptomLevel {
+  mild
+  severe
+}
+
+model Medication {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  title        String
+  dosage       String
+  instructions String?
+
+  startDate    DateTime
+  endDate      DateTime
+  createdAt    DateTime @default(now())
+
+  patient      User     @relation("PrescribedTo", fields: [patientId], references: [id])
+  patientId    String   @db.ObjectId
+
+  doctor       User     @relation("AssignedBy", fields: [doctorId], references: [id])
+  doctorId     String   @db.ObjectId
+}
+
+model Event {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  type      EventType
+  zoomLink  String?  
+  dateTime  DateTime
+  notes     String?
+
+  doctor    User     @relation("DoctorEvents", fields: [doctorId], references: [id])
+  doctorId  String   @db.ObjectId
+
+  patient   User     @relation("PatientEvents", fields: [patientId], references: [id])
+  patientId String   @db.ObjectId
+
+  createdAt DateTime @default(now())
+}
+
+enum EventType {
+  inperson
+  online
 }

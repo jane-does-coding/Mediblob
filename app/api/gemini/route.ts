@@ -4,14 +4,23 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
 export async function POST(req: Request) {
-	const { prompt } = await req.json();
+	const { prompt, userInfo } = await req.json();
 	const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
 
+	console.log(prompt, userInfo);
+
 	const fullPrompt = `
-Answer the following in under 300 characters. Keep it clear and helpful.
+You are MediBlob, an AI assistant that gives advice and summaries for patients.
+Context about the user (do not repeat this info back, just use it): 
+${JSON.stringify(userInfo)}
+
+Guidelines:
+- Do NOT suggest visiting a doctor or calling emergency services.
+- Just give practical advice, insights, or summaries based on their context.
+- Be short and friendly, under 300 characters.
 
 User: ${prompt}
-`;
+    `;
 
 	try {
 		const result = await model.generateContent(fullPrompt);

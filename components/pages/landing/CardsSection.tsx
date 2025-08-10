@@ -69,12 +69,12 @@ const CardsSection = () => {
 								variants={fadeInUp(0.4)}
 								className="absolute top-[1vh] left-[50%] translate-x-[-50%] border-[1.5px] border-black py-[0.5vh] px-[2vw] bg-white rounded-full"
 							>
-								<p className="font-light text-[2vh]">Lorem Ipsum</p>
+								<p className="font-light text-[2vh]">Real‑Time Tracking</p>
 							</motion.div>
 							<motion.img
-								src="/banner.jpg"
+								src="/imgs/img6.png"
 								className="w-full h-full object-cover"
-								alt=""
+								alt="Track symptoms and medications"
 							/>
 						</motion.div>
 
@@ -82,13 +82,13 @@ const CardsSection = () => {
 							initial="hidden"
 							animate={controls1}
 							variants={fadeInUp(0.8)}
-							className="bg-neutral-100 rounded-[6.5vh] min-h-[15vh] w-full box-border border-2 border-black flex flex-col items-start justify-center px-[3vw]"
+							className="bg-neutral-100 rounded-[6.5vh] min-h-[17.5vh] w-full box-border border-2 border-black flex flex-col items-start justify-center px-[3vw]"
 						>
 							<h2 className="text-[3vh] font-medium mb-[0.25vh]">
-								Lorem Ipsum
+								Stay On Top Of Health
 							</h2>
 							<p className="text-[2.25vh] font-extralight">
-								Lorem ipsum dolor sit.
+								Track your symptoms, meds, and habits in one simple place.
 							</p>
 						</motion.div>
 					</motion.div>
@@ -113,12 +113,12 @@ const CardsSection = () => {
 								variants={fadeInUp(0.5)}
 								className="absolute top-[1vh] left-[50%] translate-x-[-50%] border-[1.5px] border-black py-[0.5vh] px-[2vw] bg-white rounded-full"
 							>
-								<p className="font-light text-[2vh]">Lorem Ipsum</p>
+								<p className="font-light text-[2vh]">Doctor Insights</p>
 							</motion.div>
 							<motion.img
-								src="/banner.jpg"
+								src="/imgs/img3.png"
 								className="w-full h-full object-cover"
-								alt=""
+								alt="Doctor monitoring dashboard"
 							/>
 						</motion.div>
 
@@ -126,13 +126,13 @@ const CardsSection = () => {
 							initial="hidden"
 							animate={controls2}
 							variants={fadeInUp(0.9)}
-							className="bg-neutral-100 rounded-[6.5vh] min-h-[15vh] w-full box-border border-2 border-black flex flex-col items-start justify-center px-[3vw]"
+							className="bg-neutral-100 rounded-[6.5vh] min-h-[17.5vh] w-full box-border border-2 border-black flex flex-col items-start justify-center px-[3vw]"
 						>
 							<h2 className="text-[3vh] font-medium mb-[0.25vh]">
-								Lorem Ipsum
+								Share With Your Doctor
 							</h2>
 							<p className="text-[2.25vh] font-extralight">
-								Lorem ipsum dolor sit.
+								Your updates go straight to your doctor, in real-time.
 							</p>
 						</motion.div>
 					</motion.div>
@@ -157,12 +157,12 @@ const CardsSection = () => {
 								variants={fadeInUp(0.6)}
 								className="absolute top-[1vh] left-[50%] translate-x-[-50%] border-[1.5px] border-black py-[0.5vh] px-[2vw] bg-white rounded-full"
 							>
-								<p className="font-light text-[2vh]">Lorem Ipsum</p>
+								<p className="font-light text-[2vh]">Video & Chat</p>
 							</motion.div>
 							<motion.img
-								src="/banner.jpg"
+								src="/imgs/img8.png"
 								className="w-full h-full object-cover"
-								alt=""
+								alt="Video call feature"
 							/>
 						</motion.div>
 
@@ -170,13 +170,14 @@ const CardsSection = () => {
 							initial="hidden"
 							animate={controls3}
 							variants={fadeInUp(1.0)}
-							className="bg-neutral-100 rounded-[6.5vh] min-h-[15vh] w-full box-border border-2 border-black flex flex-col items-start justify-center px-[3vw]"
+							className="bg-neutral-100 rounded-[6.5vh] min-h-[17.5vh] w-full box-border border-2 border-black flex flex-col items-start justify-center px-[3vw]"
 						>
 							<h2 className="text-[3vh] font-medium mb-[0.25vh]">
-								Lorem Ipsum
+								Talk Without Stress
 							</h2>
 							<p className="text-[2.25vh] font-extralight">
-								Lorem ipsum dolor sit.
+								Secure calls and messages so you and your doctor are always
+								connected.
 							</p>
 						</motion.div>
 					</motion.div>

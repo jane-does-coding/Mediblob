@@ -1,7 +1,8 @@
 "use client";
+import { SafeUser } from "@/app/types/SafeUser";
 import React, { useState, useEffect, useRef } from "react";
 
-const MediblobChat = () => {
+const MediblobChat = ({ currentUser }: { currentUser: SafeUser }) => {
 	const [chatStarted, setChatStarted] = useState(false);
 	const [messages, setMessages] = useState<
 		{ sender: "user" | "bot"; text: string }[]
@@ -30,7 +31,7 @@ const MediblobChat = () => {
 			const res = await fetch("/api/gemini", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ prompt: userMessage }),
+				body: JSON.stringify({ prompt: userMessage, userInfo: currentUser }),
 			});
 			const data = await res.json();
 			setMessages((prev) => [
@@ -52,7 +53,7 @@ const MediblobChat = () => {
 		return (
 			<div className="w-full border-2 border-black min-h-[55vh] items-center justify-center rounded-[10vh] flex flex-col px-[3vw] pt-[2vh] pb-[5vh]">
 				<h2 className="text-[3.5vh] font-medium mb-[2vh]">MediBlob</h2>
-				<img src="/mediblob.png" alt="MediBlob" />
+				<img src="/mediblob.png" alt="MediBlob" className="w-[70%]" />
 				<p className="text-center font-light mt-[3vh] text-[2vh]">
 					MediBlob is an AI you can chat with while waiting for your doctor’s
 					response.
