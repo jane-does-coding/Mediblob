@@ -2,6 +2,10 @@
 
 **Mediblob** is a modern medical portal that connects **patients and doctors**. It lets patients track their health in real time (symptoms, medications, appointments) while doctors monitor everything on a dashboard and can manage care plans
 
+I made the project with Nextjs, Typescript, Javascript, Tailwind, MongoDB.
+
+Something I struggled with while creating this project was to create different access levels, since I haven't done that before, and I've been able to complete it, though. 
+
 ---
 
 ## Features
