@@ -1,5 +1,7 @@
 # Mediblob
 
+Demo Video: https://www.youtube.com/watch?v=6ipWNKoLJ-U
+
 **Mediblob** is a modern medical portal that connects **patients and doctors**. It lets patients track their health in real time (symptoms, medications, appointments) while doctors monitor everything on a dashboard and can manage care plans
 
 I made the project with Nextjs, Typescript, Javascript, Tailwind, MongoDB.
@@ -67,7 +69,7 @@ The main entities:
 ### 1. Clone the repo
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/jane-does-coding/Mediblob
 cd mediblob
 ```
 
@@ -80,7 +82,7 @@ npm i
 ### 3. Configure .env
 
 ```bash
-DATABASE_URL="your mongodb+srv://..."
+DATABASE_URL="your mongodb"
 NEXTAUTH_SECRET="random-secret"
 ```
 
